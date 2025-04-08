@@ -1,3 +1,5 @@
+//API being used: https://www.api-basketball.com/
+
 document.addEventListener("DOMContentLoaded", () => {
     fetchLiveGame();
     fetchMVPStats();
@@ -5,6 +7,60 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchNews();
 });
 
+async function fetchLiveGame(){
+    let reponse, responseJSON; 
+        
+        //Call to API 
+        try {
+
+            fetch("https://v1.basketball.api-sports.io/odds?season=2024-2025&bet=1&bookmaker=6&game=1912&league=12", {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "v1.basketball.api-sports.io",
+                    "x-rapidapi-key": "XxXxXxXxXxXxXxXxXxXxXxXx"
+                }
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+            
+        } catch (e) {
+            console.error("fetching data failed:", e);
+            alert(e); 
+            return; 
+        }
+ 
+        let odds = responseJSON.get("odds"); 
+
+        document.getElementById("ai-prediction").innerHTML = "Odds" + odds;
+
+        /* // Given by the API - wanted to do it similar to the Web 103 projects
+        fetch("https://v1.basketball.api-sports.io/games?date=2019-11-23", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "v1.basketball.api-sports.io",
+                "x-rapidapi-key": "XxXxXxXxXxXxXxXxXxXxXxXx"
+            }
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        */
+}
+
+
+
+
+
+
+
+/*
 function fetchLiveGame() {
     // Replace with an actual API call
     document.getElementById("live-game").innerHTML = `
@@ -14,6 +70,7 @@ function fetchLiveGame() {
         <p>Player of the Game: John Doe - 27 PTS, 8 REB, 5 AST</p>
     `;
 }
+*/ 
 
 function fetchMVPStats() {
     // Replace with an actual API call
