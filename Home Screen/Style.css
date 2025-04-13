@@ -1,12 +1,1 @@
-/* using font-face to include a custom font */ 
-@font-face {
-    font-family: 'nbaFont';
-    /* Trying to implement a custom font, not working right now but there are no errors */ 
-    src: url('NCAA-North-Dakota-St-Bison.ttf.woff') format('woff'); 
-    font-weight: normal;
-    font-style: normal;
-}
 
-h1 {
-    font-family: 'nbaFont', sans-serif;
-}

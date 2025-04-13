@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="Style.css"> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>March Madness Tracker</title>
-    </head>
-    <body>
-        <h1 id = "title">NCAA March Madness Tracker</h1>
-        <div id="bracket" class="bracket">
-            <div class ="team" id="team1">Team 1</div>
-            <div class="team" id="team2">Team 2</div>
-            <div class="team" id="team3">Team 3</div>
-            <div class="team" id="team4">Team 4</div>
- 
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Live Update</title>
+    <link rel="stylesheet" href="Style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Title - Will change to Abby's design later -->
+    <div class="title">
+        <img src="https://github.com/hto-projects/mikes-minions/blob/develop/NBA%20title%20-%20transparent%20bg.png?raw=true" alt="NBA Overview" width="300">
+    </div>
+    <div class="container">
+        <div class="panel live-update">
+            <h2>Live Update</h2>
+            <div id="live-game">
+                <p>Loading latest game...</p>
+            </div>
         </div>
-
-        <button onclick="updateWinners()">Update Winners</button>
-        <!--intagrate this with the api: whenever something ins-->
         
-        <h2>AI's Take</h2>
-        <div id="chatgpt-opinion">Click the button to get insights!</div>
-        <button onclick="getChatGPTOpinion()">Get Opinion</button>
-    </body>
+        <div class="panel players">
+            <h2>MVP Contenders</h2>
+            <ul id="mvp-list">
+                <li>Loading MVP stats...</li>
+            </ul>
+        </div>
+        
+        <div class="panel ai-take">
+            <h2>AI's Take</h2>
+            <p id="ai-prediction">Analyzing team stats...</p>
+        </div>
+        
+        <div class="panel news">
+            <h2>News</h2>
+            <div id="news-feed">
+                <p>Fetching latest NBA news...</p>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
