@@ -8,34 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function fetchLiveGame(){
-    let reponse, responseJSON; 
+    let response, responseJSON; 
         
-        //Call to API 
-        try {
-
-            fetch("https://v1.basketball.api-sports.io/odds?season=2024-2025&bet=1&bookmaker=6&game=1912&league=12", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "v1.basketball.api-sports.io",
-                    "x-rapidapi-key": "XxXxXxXxXxXxXxXxXxXxXxXx"
-                }
-            })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-            
-        } catch (e) {
-            console.error("fetching data failed:", e);
-            alert(e); 
-            return; 
+    //Call to API 
+    const url = 'https://v2.nba.api-sports.io/games?date=2025-04-15';
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '8d653ec6d8f0d0e883ac43325c3c85c4',
+            'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
         }
- 
-        let odds = responseJSON.get("odds"); 
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const responseJSON = await response.json();
+        console.log(responseJSON);
+    } catch (error) {
+        console.error(error);
+    }
 
-        document.getElementById("ai-prediction").innerHTML = "Odds" + odds;
+    //document.getElementById("live-game").innerHTML = ``  
 
         /* // Given by the API - wanted to do it similar to the Web 103 projects
         fetch("https://v1.basketball.api-sports.io/games?date=2019-11-23", {
@@ -53,11 +46,6 @@ async function fetchLiveGame(){
         });
         */
 }
-
-
-
-
-
 
 
 /*
