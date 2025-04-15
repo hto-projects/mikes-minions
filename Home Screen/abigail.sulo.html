@@ -12,35 +12,39 @@
     <div class="title">
         <img src="https://github.com/hto-projects/mikes-minions/blob/develop/NBA%20title%20-%20transparent%20bg.png?raw=true" alt="NBA Overview" width="300">
     </div>
+
     <div class="container">
         <div class="panel live-update">
-            <!-- Used to be "Live Update", but cannot access live games-->
             <h2>Upcoming Games</h2>
             <div id="live-game">
                 <p>Loading latest game...</p>
             </div>
-            <!-- Added a new section to display time of game (for now)-->
             <div id="game-time">
                 <p>No Time to Display</p>
             </div>
         </div>
-        
+
         <div class="panel players">
             <h2>MVP Contenders</h2>
             <ul id="mvp-list">
                 <li>Loading MVP stats...</li>
             </ul>
         </div>
-        
-        <div class="panel ai-take">
-            <h2>AI's Take</h2>
-            <p id="ai-prediction">Analyzing team stats...</p>
+
+        <div class="panel player-stats">
+            <h2>Player Stat Lookup</h2>
+            <p>Search for a player's latest game or season statistics:</p>
+            <input type="text" id="player-search" placeholder="Enter player name">
+            <button id="search-btn">Search</button>
+            <div id="player-results">
+                <p>Player stats will appear here...</p>
+            </div>
         </div>
-        
+
         <div class="panel news">
             <h2>News</h2>
             <div id="news-feed">
-                <p>Fetching latest NBA news...</p>
+                <p>nuggets coach bye</p>
             </div>
         </div>
     </div>
