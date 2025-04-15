@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function fetchLiveGame(){
-    let response, responseJSON; 
+    let Response, responseJSON; 
         
     //Call to API 
     const url = 'https://v2.nba.api-sports.io/games?date=2025-04-15';
@@ -21,46 +21,61 @@ async function fetchLiveGame(){
     };
     
     try {
-        const response = await fetch(url, options);
-        const responseJSON = await response.json();
+        Response = await fetch(url, options);
+        responseJSON = await Response.json();
         console.log(responseJSON);
+        // For Upcoming games 
+        if (responseJSON && responseJSON.response && responseJSON.response.length > 0) {
+            document.getElementById("live-game").innerHTML = responseJSON
+            .response[0]
+            .teams
+            .home
+            .name + " vs. " +  
+            responseJSON
+            .response[0]
+            .teams
+            .visitors
+            .name;
+
+           document.getElementById("game-time").innerHTML = " Time: " + responseJSON.response[0].date.start.slice(11,16); 
+        } else {
+            document.getElementById("live-game").innerHTML = "No game data available";
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function fetchMVPStats() {
+    let Response, responseJSON; 
+        
+    //Call to API 
+    const url = 'https://v2.nba.api-sports.io/players?id=265'; //json of Lebron stats, most likely not recent
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '8d653ec6d8f0d0e883ac43325c3c85c4',
+            'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
+        }
+    };
+    
+    //For Top Players (in terms of points)
+    try {
+        Response = await fetch(url, options);
+        responseJSON = await Response.json();
+        console.log(responseJSON);
+        /*  
+        if (responseJSON && responseJSON.response && responseJSON.response.length > 0) {
+            document.getElementById("mvp-list").innerHTML = responseJSON;
+        } else {
+            document.getElementById("live-game").innerHTML = "No game data available";
+        }
+        */
     } catch (error) {
         console.error(error);
     }
 
-    //document.getElementById("live-game").innerHTML = ``  
 
-        /* // Given by the API - wanted to do it similar to the Web 103 projects
-        fetch("https://v1.basketball.api-sports.io/games?date=2019-11-23", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "v1.basketball.api-sports.io",
-                "x-rapidapi-key": "XxXxXxXxXxXxXxXxXxXxXxXx"
-            }
-        })
-        .then(response => {
-            console.log(response);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-        */
-}
-
-
-/*
-function fetchLiveGame() {
-    // Replace with an actual API call
-    document.getElementById("live-game").innerHTML = `
-        <p><strong>Cavs</strong> vs <strong>Bulls</strong></p>
-        <p>Score: 13 - 12</p>
-        <p>Time Remaining: 5:28 1Q</p>
-        <p>Player of the Game: N/A</p>
-    `;
-}
-*/ 
-
-function fetchMVPStats() {
     // Replace with an actual API call
     let mvpPlayers = [
         { name: "Shai", team: "Thunder", ppg: 32.6, rpg: 5.0, apg: 6.4 },
@@ -75,6 +90,7 @@ function fetchMVPStats() {
         li.textContent = `${player.name} (${player.team}) - ${player.ppg} PPG, ${player.rpg} RPG, ${player.apg} APG`;
         list.appendChild(li);
     });
+    
 }
 
 function fetchAIPrediction() {

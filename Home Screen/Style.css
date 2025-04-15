@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0c48eed8;
+    background-color: #a4d1d8;
     text-align: center;
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 .panel {
-    background-color: rgb(247, 114, 6);
+    background-color: #e1aa43;
     padding: 20px;
     border-radius: 10px;
     box-shadow:  10px rgba(0, 0, 0, 0.1);
