@@ -102,7 +102,7 @@ function fetchAIPrediction() {
 function fetchNews() {
     // Replace with an API call
     document.getElementById("news-feed").innerHTML = `
-        <p><strong>Breaking:</strong> Nuggets Fire Head Coach Michael Malone and GM Calvin Booth. <a href="https://www.nytimes.com/athletic/6264653/2025/04/08/michael-malone-fired-nuggets-head-coach/">Read more</a></p>
-        <p><strong>Trade Rumors:</strong> Phoenix Suns are looking to acquire a large haul for Kevin Durant even though he doesn't want to leave. <a href="https://www.espn.com/nba/story/_/id/44540677/stake-nba-west-storylines-matchups-playoffs">Read more</a></p>
+        <p><strong>Breaking:</strong> Damian Lillard is set to miss the start of the playoffs. <a href="https://www.espn.com/nba/story/_/id/44684806/bucks-damian-lillard-miss-start-nba-playoffs-sources-say">Read more</a></p>
+        <p><strong>Trade Rumors:</strong> An NBA trade rumor is emerging that the Lakers are trying to find the "perfect" Luka Doncic teamate as LeGOAT starts to age. <a href="https://lakeshowlife.com/wild-nba-trade-rumor-opens-door-lakers-perfect-luka-doncic-teammate">Read more</a></p>
     `;
 }
