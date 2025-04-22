@@ -40,7 +40,8 @@ async function fetchLiveGame(){
             .teams
             .visitors
             .name;
-
+        
+            //Time is in UTC Time, need to convert time into est
            document.getElementById("game-time").innerHTML = " Time: " + responseJSON.response[0].date.start.slice(11,16); 
         } else {
             document.getElementById("live-game").innerHTML = "No game data available";
@@ -54,12 +55,12 @@ async function fetchMVPStats() {
     let Response, responseJSON; 
         
     //Call to API 
-    const url = 'https://v2.nba.api-sports.io/players?id=265'; //json of Lebron stats, most likely not recent
+    const url = 'https://api.balldontlie.io/v1/players?search=james'; //json of Lebron stats, most likely not recent
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '8d653ec6d8f0d0e883ac43325c3c85c4',
-            'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
+            'x-rapidapi-key': '9442113e-0db9-44e6-93db-e0debe6db30e',
+            'x-rapidapi-host': 'https://docs.balldontlie.io/'
         }
     };
     
@@ -75,12 +76,14 @@ async function fetchMVPStats() {
             document.getElementById("live-game").innerHTML = "No game data available";
         }
         */
+
+        //document.getElementById("mvp-list").innerHTML = responseJSON.response[0].
     } catch (error) {
         console.error(error);
     }
 
 
-    // Replace with an actual API call
+    /* Replace with an actual API call
     let mvpPlayers = [
         { name: "Shai", team: "Thunder", ppg: 32.6, rpg: 5.0, apg: 6.4 },
         { name: "Jokic", team: "Nuggets", ppg: 30.0, rpg: 12.8, apg: 10.2 },
@@ -94,6 +97,7 @@ async function fetchMVPStats() {
         li.textContent = `${player.name} (${player.team}) - ${player.ppg} PPG, ${player.rpg} RPG, ${player.apg} APG`;
         list.appendChild(li);
     });
+    */
     
 }
 
