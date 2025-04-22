@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchLiveGame(){
     let Response, responseJSON; 
+
+
         
     //Call to API 
-    const url = 'https://v2.nba.api-sports.io/games?date=2025-04-15';
+    const date = new Date();
+    const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
+    const url = 'https://v2.nba.api-sports.io/games?date=2025-04-22';
     const options = {
         method: 'GET',
         headers: {
