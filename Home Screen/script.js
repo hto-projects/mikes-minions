@@ -78,9 +78,9 @@ async function fetchMVPStats() {
 
     // Replace with an actual API call
     let mvpPlayers = [
-        { name: "Shai", team: "Thunder", ppg: 32.6, rpg: 5.0, apg: 6.4 },
-        { name: "Jokic", team: "Nuggets", ppg: 30.0, rpg: 12.8, apg: 10.2 },
-        { name: "Giannis", team: "Bucks", ppg: 30.5, rpg: 11.9, apg: 6.3 }
+        { name: "Shai", team: "Thunder", ppg: 32.7, rpg: 5.0, apg: 6.4 },
+        { name: "Jokic", team: "Nuggets", ppg: 29.6, rpg: 12.7, apg: 10.2 },
+        { name: "Giannis", team: "Bucks", ppg: 30.4, rpg: 11.9, apg: 6.5 }
     ];
 
     let list = document.getElementById("mvp-list");
@@ -102,7 +102,7 @@ function fetchAIPrediction() {
 function fetchNews() {
     // Replace with an API call
     document.getElementById("news-feed").innerHTML = `
-        <p><strong>Breaking:</strong> Damian Lillard is set to miss the start of the playoffs. <a href="https://www.espn.com/nba/story/_/id/44684806/bucks-damian-lillard-miss-start-nba-playoffs-sources-say">Read more</a></p>
+        <p><strong>Breaking:</strong> Anthony Edwards fined $50,000 for an inapropriate response to a fan after questioned the whereabouts of his four alleged kids. <a href="https://pagesix.com/2025/04/22/celebrity-news/nba-fines-anthony-edwards-50k-for-vulgar-response-to-fan-asking-about-his-alleged-4-kids/">Read more</a></p>
         <p><strong>Trade Rumors:</strong> An NBA trade rumor is emerging that the Lakers are trying to find the "perfect" Luka Doncic teamate as LeGOAT starts to age. <a href="https://lakeshowlife.com/wild-nba-trade-rumor-opens-door-lakers-perfect-luka-doncic-teammate">Read more</a></p>
     `;
 }
