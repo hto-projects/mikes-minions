@@ -7,20 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchNews();
 });
 
+
 async function fetchLiveGame(){
+   
     let Response, responseJSON; 
 
-
-        
     //Call to API 
     const date = new Date();
     const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const url = 'https://v2.nba.api-sports.io/games?date=2025-04-22';
+    const url = 'https://api.balldontlie.io/v1/games?seasons[]=2025';
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '8d653ec6d8f0d0e883ac43325c3c85c4',
-            'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
+            'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e',
+            //'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
         }
     };
     
@@ -28,7 +28,7 @@ async function fetchLiveGame(){
         Response = await fetch(url, options);
         responseJSON = await Response.json();
         console.log(responseJSON);
-        // For Upcoming games 
+        /* For Upcoming games 
         if (responseJSON && responseJSON.response && responseJSON.response.length > 0) {
             document.getElementById("live-game").innerHTML = responseJSON
             .response[0]
@@ -43,9 +43,11 @@ async function fetchLiveGame(){
         
             //Time is in UTC Time, need to convert time into est
            document.getElementById("game-time").innerHTML = " Time: " + responseJSON.response[0].date.start.slice(11,16); 
-        } else {
+                    
+           } else {
             document.getElementById("live-game").innerHTML = "No game data available";
         }
+            */ 
     } catch (error) {
         console.error(error);
     }
@@ -53,17 +55,20 @@ async function fetchLiveGame(){
 
 async function fetchMVPStats() {
     let Response, responseJSON; 
-        
+    
+
     //Call to API 
-    const url = 'https://api.balldontlie.io/v1/players?search=james'; //json of Lebron stats, most likely not recent
+    //url : https://api.balldontlie.io/v1/stats
+    const date = new Date();
+    const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
+    const url = 'https://api.balldontlie.io/v1/players?search=james';
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '9442113e-0db9-44e6-93db-e0debe6db30e',
-            'x-rapidapi-host': 'https://docs.balldontlie.io/'
+            'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e',
         }
     };
-    
+
     //For Top Players (in terms of points)
     try {
         Response = await fetch(url, options);
