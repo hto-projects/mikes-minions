@@ -15,12 +15,11 @@ async function fetchLiveGame(){
     //Call to API 
     const date = new Date();
     const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const url = 'https://api.balldontlie.io/v1/games?seasons[]=2025';
+    const url = 'https://api.balldontlie.io/v1/games?dates[]=2025-04-29';
     const options = {
         method: 'GET',
         headers: {
             'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e',
-            //'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com'
         }
     };
     
@@ -28,26 +27,9 @@ async function fetchLiveGame(){
         Response = await fetch(url, options);
         responseJSON = await Response.json();
         console.log(responseJSON);
-        /* For Upcoming games 
-        if (responseJSON && responseJSON.response && responseJSON.response.length > 0) {
-            document.getElementById("live-game").innerHTML = responseJSON
-            .response[0]
-            .teams
-            .home
-            .name + " vs. " +  
-            responseJSON
-            .response[0]
-            .teams
-            .visitors
-            .name;
+        // For Upcoming games 
+        document.getElementById("live-game").innerHTML = responseJSON.data[0].visitor_team.full_name + " at " + responseJSON.data[0].home_team.full_name;
         
-            //Time is in UTC Time, need to convert time into est
-           document.getElementById("game-time").innerHTML = " Time: " + responseJSON.response[0].date.start.slice(11,16); 
-                    
-           } else {
-            document.getElementById("live-game").innerHTML = "No game data available";
-        }
-            */ 
     } catch (error) {
         console.error(error);
     }
@@ -61,7 +43,7 @@ async function fetchMVPStats() {
     //url : https://api.balldontlie.io/v1/stats
     const date = new Date();
     const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const url = 'https://api.balldontlie.io/v1/players?search=james';
+    const url = ' https://api.balldontlie.io/v1/players?search=James';
     const options = {
         method: 'GET',
         headers: {
@@ -75,14 +57,12 @@ async function fetchMVPStats() {
         responseJSON = await Response.json();
         console.log(responseJSON);
         /*  
-        if (responseJSON && responseJSON.response && responseJSON.response.length > 0) {
-            document.getElementById("mvp-list").innerHTML = responseJSON;
+        if (responseJSON > 0) {
+            document.getElementById("live-game").innerHTML = responseJSON.data[0];
         } else {
             document.getElementById("live-game").innerHTML = "No game data available";
         }
         */
-
-        //document.getElementById("mvp-list").innerHTML = responseJSON.response[0].
     } catch (error) {
         console.error(error);
     }
@@ -106,10 +86,30 @@ async function fetchMVPStats() {
     
 }
 
-function fetchAIPrediction() {
-    // Replace with AI analysis
-    document.getElementById("ai-prediction").textContent = 
-        "based on team stats.......";
+async function playerStatLookup() {
+    let Response, responseJSON; 
+    
+    var userInput = document.getElementById("player-search").value; 
+
+    //Call to API 
+    //url : https://api.balldontlie.io/v1/stats
+    const date = new Date();
+    const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
+    const url = ' https://api.balldontlie.io/v1/players?search=' + userInput;
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e',
+        }
+    };
+
+    try {
+        Response = await fetch(url, options);
+        responseJSON = await Response.json();
+        console.log(responseJSON);
+    } catch (e) {
+        console.error(e); 
+    }
 }
 
 function fetchNews() {
