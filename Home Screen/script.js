@@ -88,7 +88,7 @@ async function fetchMVPStats() {
     }
 
 
-    /* Replace with an actual API call
+    /* Replace with an actual API call */
     let mvpPlayers = [
         { name: "Shai", team: "Thunder", ppg: 32.7, rpg: 5.0, apg: 6.4 },
         { name: "Jokic", team: "Nuggets", ppg: 29.6, rpg: 12.7, apg: 10.2 },
@@ -102,7 +102,7 @@ async function fetchMVPStats() {
         li.textContent = `${player.name} (${player.team}) - ${player.ppg} PPG, ${player.rpg} RPG, ${player.apg} APG`;
         list.appendChild(li);
     });
-    */
+    
     
 }
 
