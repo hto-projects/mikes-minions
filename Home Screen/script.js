@@ -43,7 +43,7 @@ async function fetchMVPStats() {
     //url : https://api.balldontlie.io/v1/stats
     const date = new Date();
     const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const url = ' https://api.balldontlie.io/v1/players?search=James';
+    const url = ' https://api.balldontlie.io/v1/players';
     const options = {
         method: 'GET',
         headers: {
@@ -107,6 +107,8 @@ async function playerStatLookup() {
         Response = await fetch(url, options);
         responseJSON = await Response.json();
         console.log(responseJSON);
+
+        document.getElementById("player-results").innerHTML = responseJSON.data[2].first_name + " " + responseJSON.data[2].last_name;
     } catch (e) {
         console.error(e); 
     }
