@@ -87,32 +87,53 @@ async function fetchMVPStats() {
 }
 
 async function playerStatLookup() {
-    let Response, responseJSON; 
-    
-    var userInput = document.getElementById("player-search").value; 
+    const userInput = document.getElementById("player-search").value.trim();
+    const resultsContainer = document.getElementById("player-results");
 
-    //Call to API 
-    //url : https://api.balldontlie.io/v1/stats
-    const date = new Date();
-    const formattedDate = date.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const url = ' https://api.balldontlie.io/v1/players?search=' + userInput;
+    if (!userInput) {
+        resultsContainer.innerHTML = "<p>Please enter a player name.</p>";
+        return;
+    }
+
+    const url = 'https://api.balldontlie.io/v1/players?search=' + userInput;
     const options = {
         method: 'GET',
         headers: {
-            'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e',
+            'Authorization': '9442113e-0db9-44e6-93db-e0debe6db30e'
         }
     };
 
     try {
-        Response = await fetch(url, options);
-        responseJSON = await Response.json();
-        console.log(responseJSON);
+        const Response = await fetch(url, options);
+        const responseJSON = await Response.json();
 
-        document.getElementById("player-results").innerHTML = responseJSON.data[2].first_name + " " + responseJSON.data[2].last_name;
-    } catch (e) {
-        console.error(e); 
+        const matchedPlayers = responseJSON.data;
+
+        if (!matchedPlayers || matchedPlayers.length === 0) {
+            resultsContainer.innerHTML = "<p>No player found. Try putting in full name</p>";
+            return;
+        }
+
+        const player = matchedPlayers.find(p => 
+            `${p.first_name.toLowerCase()} ${p.last_name.toLowerCase()}` === userInput.toLowerCase()
+        ) || matchedPlayers[0]; 
+
+        resultsContainer.innerHTML = `
+            <h3>${player.first_name} ${player.last_name}</h3>
+            <p><strong>College:</strong> ${player.college || "N/A"}</p>
+            <p><strong>Country:</strong> ${player.country}</p>
+            <p><strong>Draft:</strong> ${player.draft_year ? `${player.draft_year}, Round ${player.draft_round}, Pick ${player.draft_number}` : "N/A"}</p>
+            <p><strong>Height:</strong> ${player.height || "N/A"}</p>
+            <p><strong>Jersey:</strong> ${player.jersey_number || "N/A"}</p>
+            <p><strong>Position:</strong> ${player.position || "N/A"}</p>
+            <p><strong>Team:</strong> ${player.team.full_name} (${player.team.abbreviation})</p>
+        `;
+    } catch (error) {
+        console.error(error);
+        resultsContainer.innerHTML = "<p>Error fetching player data. Try again later.</p>";
     }
 }
+
 
 function fetchNews() {
     // Replace with an API call
