@@ -117,7 +117,7 @@ async function playerStatLookup() {
 function fetchNews() {
     // Replace with an API call
     document.getElementById("news-feed").innerHTML = `
-        <p><strong>Breaking:</strong> Anthony Edwards fined $50,000 for an inapropriate response to a fan after questioned the whereabouts of his four alleged kids. <a href="https://pagesix.com/2025/04/22/celebrity-news/nba-fines-anthony-edwards-50k-for-vulgar-response-to-fan-asking-about-his-alleged-4-kids/">Read more</a></p>
-        <p><strong>Trade Rumors:</strong> An NBA trade rumor is emerging that the Lakers are trying to find the "perfect" Luka Doncic teamate as LeGOAT starts to age. <a href="https://lakeshowlife.com/wild-nba-trade-rumor-opens-door-lakers-perfect-luka-doncic-teammate">Read more</a></p>
+        <p><strong>Breaking:</strong> Nuggets steal Game 1 from the No 1 seed Thunder with a game winning three by Aaron Gordon. <a href="https://pagesix.com/2025/04/22/celebrity-news/nba-fines-anthony-edwards-50k-for-vulgar-response-to-fan-asking-about-his-alleged-4-kids/">Read more</a></p>
+        <p><strong>Trade Rumors:</strong> Interest in Kevin Durant continues to increase from within the Rockets Organization. <a href="https://hoopshype.com/2025/05/05/rockets-trade-interest-in-kevin-durant-continues-to-be-exaggerated/">Read more</a></p>
     `;
 }
