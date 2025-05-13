@@ -117,7 +117,7 @@ async function playerStatLookup() {
 function fetchNews() {
     // Replace with an API call
     document.getElementById("news-feed").innerHTML = `
-        <p><strong>Breaking:</strong> Nuggets steal Game 1 from the No 1 seed Thunder with a game winning three by Aaron Gordon. <a href="https://pagesix.com/2025/04/22/celebrity-news/nba-fines-anthony-edwards-50k-for-vulgar-response-to-fan-asking-about-his-alleged-4-kids/">Read more</a></p>
+        <p><strong>Breaking:</strong> The Dallas Mavericks have officially got the first overall pick in the lottery draft on Monday. <a href="https://www.nytimes.com/athletic/6350742/2025/05/12/2025-nba-draft-lottery-cooper-flagg/">Read more</a></p>
         <p><strong>Trade Rumors:</strong> Interest in Kevin Durant continues to increase from within the Rockets Organization. <a href="https://hoopshype.com/2025/05/05/rockets-trade-interest-in-kevin-durant-continues-to-be-exaggerated/">Read more</a></p>
     `;
 }
